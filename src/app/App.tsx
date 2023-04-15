@@ -1,6 +1,8 @@
 import styles from './App.module.scss'
 import logo from '../assets/logo.png'
-import { SimpleCheckbox } from '../components/Checkbox/SimpleCheckbox'
+import { Ticket } from '../components/Ticket'
+import { SimpleCheckbox } from '../components/SimpleCheckbox'
+import { CircleCheckbox } from '../components/CircleCheckbox'
 
 function App() {
   return (
@@ -18,29 +20,46 @@ function App() {
               <div className={styles.title}>Количество пересадок</div>
               <ul className={styles.checkboxes}>
                 <li>
-                  <SimpleCheckbox span="Без пересадок" />
+                  <SimpleCheckbox text="Без пересадок" />
                 </li>
                 <li>
-                  <SimpleCheckbox span="1 пересадка" />
+                  <SimpleCheckbox text="1 пересадка" />
                 </li>
                 <li>
-                  <SimpleCheckbox span="2 пересадки" />
+                  <SimpleCheckbox text="2 пересадки" />
                 </li>
                 <li>
-                  <SimpleCheckbox span="3 пересадки" />
+                  <SimpleCheckbox text="3 пересадки" />
                 </li>
               </ul>
             </div>
             <div className={styles.companyFilter}>
               <div className={styles.title}>Компании</div>
               <ul className={styles.radios}>
-                <li>Победа</li>
-                <li>Red Wings</li>
-                <li>S7 Airlines</li>
+                <li>
+                  <CircleCheckbox text="Победа" />
+                </li>
+                <li>
+                  <CircleCheckbox text="Red Wings" />
+                </li>
+                <li>
+                  <CircleCheckbox text="S7 Airlines" />
+                </li>
               </ul>
             </div>
           </div>
-          <div className={styles.ticketsBlock}></div>
+          <div className={styles.ticketsBlock}>
+            <ul className={styles.switcherList}>
+              <li className={styles.switcherItem__active}>Самый дешевый</li>
+              <li className={styles.switcherItem}>Самый быстрый</li>
+              <li className={styles.switcherItem}>Самый оптимальный</li>
+            </ul>
+            <ul className={styles.tickets}>
+              <Ticket />
+              {/* <div className={styles.noTickets}>Билетов не найдено</div> */}
+            </ul>
+            <button className={styles.lazyBtn}>Загрузить еще билеты</button>
+          </div>
         </main>
       </div>
     </div>

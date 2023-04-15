@@ -1,7 +1,7 @@
-import styles from './SimpleCheckbox.module.scss'
+import styles from './index.module.scss'
 import { useState } from 'react'
 
-function SimpleCheckbox({ span }: any) {
+function SimpleCheckbox({ text }: any) {
   const [isChecked, setIsChecked] = useState(false)
 
   return (
@@ -31,7 +31,7 @@ function SimpleCheckbox({ span }: any) {
         )}
       </span>
       <span className={isChecked ? styles.activeText : styles.text}>
-        {span}
+        {text}
       </span>
     </label>
   )
