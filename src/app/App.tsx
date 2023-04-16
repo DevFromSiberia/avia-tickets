@@ -1,8 +1,9 @@
 import styles from './App.module.scss'
 import logo from '../assets/logo.png'
 import { Ticket } from '../components/Ticket'
-import { SimpleCheckbox } from '../components/SimpleCheckbox'
-import { CircleCheckbox } from '../components/CircleCheckbox'
+import { Filter } from '../components/Filter'
+import { Switcher } from '../components/Switcher'
+import { NoTickets } from '../components/NoTickets'
 
 function App() {
   return (
@@ -15,48 +16,31 @@ function App() {
           </a>
         </header>
         <main className={styles.main}>
-          <div className={styles.filters}>
-            <div className={styles.transferFilter}>
-              <div className={styles.title}>Количество пересадок</div>
-              <ul className={styles.checkboxes}>
-                <li>
-                  <SimpleCheckbox text="Без пересадок" />
-                </li>
-                <li>
-                  <SimpleCheckbox text="1 пересадка" />
-                </li>
-                <li>
-                  <SimpleCheckbox text="2 пересадки" />
-                </li>
-                <li>
-                  <SimpleCheckbox text="3 пересадки" />
-                </li>
-              </ul>
-            </div>
-            <div className={styles.companyFilter}>
-              <div className={styles.title}>Компании</div>
-              <ul className={styles.radios}>
-                <li>
-                  <CircleCheckbox text="Победа" />
-                </li>
-                <li>
-                  <CircleCheckbox text="Red Wings" />
-                </li>
-                <li>
-                  <CircleCheckbox text="S7 Airlines" />
-                </li>
-              </ul>
-            </div>
+          <div className={styles.filtres}>
+            <Filter
+              data={[
+                'Без пересадок',
+                '1 пересадка',
+                '2 пересадки',
+                '3 пересадки',
+              ]}
+              checkboxType="simple"
+              title="Количество пересадок"
+            />
+            <Filter
+              data={['Победа', 'RedWings', 'S7Airlines']}
+              checkboxType="circle"
+              title="Компания"
+            />
           </div>
+
           <div className={styles.ticketsBlock}>
-            <ul className={styles.switcherList}>
-              <li className={styles.switcherItem__active}>Самый дешевый</li>
-              <li className={styles.switcherItem}>Самый быстрый</li>
-              <li className={styles.switcherItem}>Самый оптимальный</li>
-            </ul>
+            <Switcher
+              data={['Самый дешевый', 'Самый быстрый', 'Самый оптимальный']}
+            />
             <ul className={styles.tickets}>
               <Ticket />
-              {/* <div className={styles.noTickets}>Билетов не найдено</div> */}
+              {/* <NoTickets /> */}
             </ul>
             <button className={styles.lazyBtn}>Загрузить еще билеты</button>
           </div>

@@ -1,7 +1,11 @@
 import styles from './index.module.scss'
 import { useState } from 'react'
 
-function CircleCheckbox({ text }: any) {
+interface Props {
+  text: string
+}
+
+function CircleCheckbox({ text }: Props) {
   const [isChecked, setIsChecked] = useState(false)
 
   return (

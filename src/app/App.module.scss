@@ -33,57 +33,8 @@
       display: flex;
       column-gap: 50px;
       padding: 50px 0;
-      .filters {
+      .filtres {
         max-width: 275px;
-        .transferFilter {
-          background-color: $second-color;
-          border-radius: 10px;
-          padding: 20px 20px 50px 20px;
-          margin-bottom: 47px;
-          .title {
-            font-family: 'Inter';
-            font-weight: 700;
-            font-size: 20px;
-            color: $purple-color;
-          }
-          .checkboxes {
-            padding: 0;
-            margin: 0;
-            margin-top: 27px;
-            margin-left: 25px;
-            li {
-              margin-bottom: 21px;
-              list-style: none;
-              &:last-child {
-                margin: 0;
-              }
-            }
-          }
-        }
-        .companyFilter {
-          background-color: $second-color;
-          border-radius: 10px;
-          padding: 20px 20px 30px 20px;
-          .title {
-            font-family: 'Inter';
-            font-weight: 700;
-            font-size: 20px;
-            color: $purple-color;
-          }
-          .radios {
-            padding: 0;
-            margin: 0;
-            margin-top: 27px;
-            margin-left: 25px;
-            li {
-              margin-bottom: 21px;
-              list-style: none;
-              &:last-child {
-                margin: 0;
-              }
-            }
-          }
-        }
         @media (max-width: 1000px) {
           & {
             display: none;
@@ -92,83 +43,10 @@
       }
       .ticketsBlock {
         flex-grow: 1;
-        .switcherList {
-          display: flex;
-          justify-content: space-between;
-          padding: 0;
-          margin: 0;
-          border-radius: 10px;
-          background-color: $second-color;
-          .switcherItem {
-            list-style: none;
-            width: 33.33%;
-            text-align: center;
-            padding: 18px 12.5px;
-            font-family: 'Inter';
-            font-weight: 700;
-            font-size: 16px;
-            color: $purple-color;
-            cursor: pointer;
-            transition: all linear 0.2s;
-            &:hover {
-              background-color: $purple-color-hover;
-              color: #fff;
-              transition: all linear 0.2s;
-            }
-            &:first-child {
-              border-top-left-radius: 10px;
-              border-bottom-left-radius: 10px;
-              border-right: 1px solid $purple-color;
-            }
-            &:last-child {
-              border-top-right-radius: 10px;
-              border-bottom-right-radius: 10px;
-              border-left: 1px solid $purple-color;
-            }
-            &__active {
-              list-style: none;
-              width: 33.33%;
-              text-align: center;
-              padding: 18px 12.5px;
-              font-family: 'Inter';
-              font-weight: 700;
-              font-size: 16px;
-              cursor: pointer;
-              background-color: $purple-color;
-              color: #fff;
-              &:first-child {
-                border-top-left-radius: 10px;
-                border-bottom-left-radius: 10px;
-              }
-              &:last-child {
-                border-top-right-radius: 10px;
-                border-bottom-right-radius: 10px;
-              }
-            }
-          }
-          @media (max-width: 690px) {
-            .switcherItem {
-              font-size: 12px;
-              padding: 18px 0;
-              &__active {
-                font-size: 12px;
-                padding: 18px 0;
-              }
-            }
-          }
-        }
         .tickets {
           margin: 0;
           padding: 0;
           margin-top: 29px;
-          .noTickets {
-            color: $purple-color;
-            margin: 0 auto;
-            width: fit-content;
-            font-family: 'Inter';
-            font-weight: 700;
-            font-size: 24px;
-          }
         }
         .lazyBtn {
           margin-top: 74px;
