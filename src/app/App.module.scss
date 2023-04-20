@@ -30,26 +30,24 @@
       }
     }
     .main {
-      display: flex;
-      column-gap: 50px;
       padding: 50px 0;
-      .filtres {
-        max-width: 275px;
-        @media (max-width: 1000px) {
-          & {
-            display: none;
-          }
-        }
-      }
+
       .ticketsBlock {
-        flex-grow: 1;
+        display: grid;
+        grid-template-areas:
+          'filters sorter sorter'
+          'filters tickets tickets'
+          'filters button button';
+        align-items: start;
         .tickets {
           margin: 0;
+          margin-top: 20px;
           padding: 0;
-          margin-top: 29px;
+          grid-area: tickets;
         }
         .lazyBtn {
-          margin-top: 74px;
+          grid-area: button;
+          margin-top: 40px;
           background-color: $purple-color;
           width: 100%;
           padding: 15px 0;
@@ -64,6 +62,13 @@
             background-color: $purple-color-hover;
             transition: background-color linear 0.2s;
           }
+        }
+        @media (max-width: 1000px) {
+          grid-template-areas:
+            'sorter'
+            'filters'
+            'tickets'
+            'button';
         }
       }
     }

@@ -1,5 +1,5 @@
-@import '../../styles/variables.scss';
-@import '../../styles/fonts.scss';
+@import '../../../../styles/variables.scss';
+@import '../../../../styles/fonts.scss';
 .wrapper {
   display: flex;
   align-items: center;
@@ -64,5 +64,33 @@
     font-size: 16px;
     color: #8700b8;
     cursor: pointer;
+  }
+  @media (max-width: 1000px) {
+    .checkbox {
+      border: 1px solid #fff;
+    }
+    .active {
+      border: 1px solid #fff;
+      &::after {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        content: '';
+        width: 15px;
+        height: 15px;
+        background-color: #fff;
+        border-radius: 50%;
+      }
+    }
+    .text {
+      color: #fff;
+      &:hover {
+        transition: none;
+        color: #fff;
+      }
+    }
+    .activeText {
+      color: #fff;
+    }
   }
 }

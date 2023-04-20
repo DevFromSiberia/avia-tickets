@@ -5,7 +5,7 @@ interface Props {
   data: string[]
 }
 
-function Switcher({ data }: Props) {
+function Sorter({ data }: Props) {
   const [active, setActive] = useState(0)
   const handler = (e: MouseEvent<HTMLLIElement, globalThis.MouseEvent>) => {
     if (e.target instanceof HTMLLIElement) {
@@ -15,7 +15,7 @@ function Switcher({ data }: Props) {
   }
 
   return (
-    <ul className={styles.switcher}>
+    <ul className={styles.sorter}>
       {data.map((item, index) => (
         <li
           data-id={index}
@@ -30,4 +30,4 @@ function Switcher({ data }: Props) {
   )
 }
 
-export { Switcher }
+export { Sorter }
