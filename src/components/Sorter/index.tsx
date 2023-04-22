@@ -1,27 +1,27 @@
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import { sortTickets } from '../../store/reducers/ActionCreators'
+
 import styles from './index.module.scss'
-import { useState, MouseEvent } from 'react'
 
-interface Props {
-  data: string[]
-}
-
-function Sorter({ data }: Props) {
-  const [active, setActive] = useState(0)
-  const handler = (e: MouseEvent<HTMLLIElement, globalThis.MouseEvent>) => {
-    if (e.target instanceof HTMLLIElement) {
-      const id = e.target.dataset.id ? +e.target.dataset.id : 0
-      setActive(id)
+function Sorter() {
+  const dispatch = useAppDispatch()
+  const { sortTypes, currentSorter } = useAppSelector(
+    (state) => state.ticketReducer
+  )
+  const handler = (item: string) => {
+    if (currentSorter === item) {
+      dispatch(sortTickets(''))
+    } else {
+      dispatch(sortTickets(item))
     }
   }
-
   return (
     <ul className={styles.sorter}>
-      {data.map((item, index) => (
+      {sortTypes.map((item, index) => (
         <li
-          data-id={index}
           key={index}
-          onClick={(e) => handler(e)}
-          className={active === index ? styles.item__active : styles.item}
+          onClick={() => handler(item)}
+          className={currentSorter === item ? styles.item__active : styles.item}
         >
           {item}
         </li>

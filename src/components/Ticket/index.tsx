@@ -2,6 +2,7 @@ import styles from './index.module.scss'
 
 import { TicketTime } from '../../models/TiketModel'
 import { getCompanyLogo } from '../../utils/companyLogo'
+import { convertTime } from '../../utils/converTime'
 
 interface Props {
   price: number
@@ -45,7 +46,7 @@ function Ticket({
         </li>
         <li className={styles.infoItem}>
           <div>В пути</div>
-          <div>4 ч 30 мин</div>
+          <div>{convertTime(duration)}</div>
         </li>
         <li className={styles.infoItem}>
           <div>Пересадки</div>

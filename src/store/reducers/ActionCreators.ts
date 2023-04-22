@@ -14,3 +14,7 @@ export const fetchTickets = () => async (dispatch: AppDispatch) => {
     dispatch(ticketSlice.actions.usersFetchingError(e.message))
   }
 }
+
+export const sortTickets = (sorter: string) => {
+  return ticketSlice.actions.setSort(sorter)
+}

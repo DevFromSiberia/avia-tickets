@@ -14,7 +14,6 @@ function App() {
   useEffect(() => {
     dispatch(fetchTickets())
   }, [])
-  console.log(tickets)
   return (
     <div className={styles.app}>
       <div className={styles.container}>
@@ -27,24 +26,24 @@ function App() {
         <main className={styles.main}>
           <div className={styles.ticketsBlock}>
             <Filters />
-            <Sorter
-              data={['Самый дешевый', 'Самый быстрый', 'Самый оптимальный']}
-            />
+            <Sorter />
             <ul className={styles.tickets}>
-              {tickets.map((ticket) => (
-                <Ticket
-                  key={ticket.id}
-                  price={ticket.price}
-                  from={ticket.from}
-                  to={ticket.to}
-                  company={ticket.company}
-                  currency={ticket.currency}
-                  date={ticket.date}
-                  duration={ticket.duration}
-                  time={ticket.time}
-                  connectionAmount={ticket.connectionAmount}
-                />
-              ))}
+              {tickets
+                // .sort((ticket_1, ticket_2) => ticket_1.id - ticket_2.id)
+                .map((ticket) => (
+                  <Ticket
+                    key={ticket.id}
+                    price={ticket.price}
+                    from={ticket.from}
+                    to={ticket.to}
+                    company={ticket.company}
+                    currency={ticket.currency}
+                    date={ticket.date}
+                    duration={ticket.duration}
+                    time={ticket.time}
+                    connectionAmount={ticket.connectionAmount}
+                  />
+                ))}
               {/* <NoTickets /> */}
             </ul>
             <button className={styles.lazyBtn}>Загрузить еще билеты</button>
