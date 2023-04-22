@@ -20,7 +20,7 @@ function Filters() {
       </div>
       <div className={dropActive ? styles.filtersList : styles.filtersListHide}>
         <TransferFilter />
-        <CompanyFilter data={['Победа', 'RedWings', 'S7Airlines']} />
+        <CompanyFilter />
       </div>
     </div>
   )

@@ -1,16 +1,14 @@
 import { CircleCheckbox } from './CircleCheckbox'
 import styles from '../index.module.scss'
+import { useAppSelector } from '../../../hooks/redux'
 
-interface Props {
-  data: string[]
-}
-
-function CompanyFilter({ data }: Props) {
+function CompanyFilter() {
+  const { companyFilterTypes } = useAppSelector((state) => state.ticketReducer)
   return (
     <div className={styles.filter}>
       <div className={styles.title}>Компания</div>
       <ul className={styles.сheckboxes}>
-        {data.map((item) => {
+        {companyFilterTypes.map((item) => {
           return (
             <li key={item}>
               <CircleCheckbox text={item} />

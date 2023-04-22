@@ -1,11 +1,9 @@
 import styles from '../index.module.scss'
 import { SimpleCheckbox } from './SimpleCheckbox'
-import { useAppDispatch, useAppSelector } from '../../../hooks/redux'
+import { useAppSelector } from '../../../hooks/redux'
 
 function TransferFilter() {
-  const { transferFilterTypes, currentFilters } = useAppSelector(
-    (state) => state.ticketReducer
-  )
+  const { transferFilterTypes } = useAppSelector((state) => state.ticketReducer)
   return (
     <div className={styles.filter}>
       <div className={styles.title}>Количество пересадок</div>

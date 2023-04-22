@@ -77,7 +77,7 @@ export const ticketSlice = createSlice({
           break
       }
     },
-    transferFilter(state, action: PayloadAction<string>) {
+    filter(state, action: PayloadAction<string>) {
       if (!state.currentFilters.includes(action.payload)) {
         state.currentFilters.push(action.payload)
       } else {
@@ -85,7 +85,6 @@ export const ticketSlice = createSlice({
           (item) => item === action.payload
         )
         state.currentFilters.splice(index, 1)
-        state.filteredTickets = state.tickets
       }
       state.filteredTickets = state.tickets.filter((ticket) => {
         const transfer = !ticket.connectionAmount
@@ -93,7 +92,14 @@ export const ticketSlice = createSlice({
           : ticket.connectionAmount === 1
           ? 'Одна пересадка'
           : `${ticket.connectionAmount} пересадки`
-        return state.currentFilters.some((item) => item === transfer)
+        if (
+          state.currentFilters.some((item) => item === transfer) ||
+          state.currentFilters.some((item) => item === ticket.company)
+        ) {
+          return true
+        } else {
+          return false
+        }
       })
     },
   },

@@ -19,4 +19,4 @@ export const sortTickets = (sorter: string) =>
   ticketSlice.actions.setSort(sorter)
 
 export const filterTickets = (filter: string) =>
-  ticketSlice.actions.transferFilter(filter)
+  ticketSlice.actions.filter(filter)
