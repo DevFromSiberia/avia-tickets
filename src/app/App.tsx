@@ -10,10 +10,13 @@ import { fetchTickets } from '../store/reducers/ActionCreators'
 
 function App() {
   const dispatch = useAppDispatch()
-  const { tickets } = useAppSelector((state) => state.ticketReducer)
+  const { filteredTickets, tickets } = useAppSelector(
+    (state) => state.ticketReducer
+  )
   useEffect(() => {
     dispatch(fetchTickets())
   }, [])
+  const renderTickets = !filteredTickets.length ? tickets : filteredTickets
   return (
     <div className={styles.app}>
       <div className={styles.container}>
@@ -28,22 +31,20 @@ function App() {
             <Filters />
             <Sorter />
             <ul className={styles.tickets}>
-              {tickets
-                // .sort((ticket_1, ticket_2) => ticket_1.id - ticket_2.id)
-                .map((ticket) => (
-                  <Ticket
-                    key={ticket.id}
-                    price={ticket.price}
-                    from={ticket.from}
-                    to={ticket.to}
-                    company={ticket.company}
-                    currency={ticket.currency}
-                    date={ticket.date}
-                    duration={ticket.duration}
-                    time={ticket.time}
-                    connectionAmount={ticket.connectionAmount}
-                  />
-                ))}
+              {renderTickets.map((ticket) => (
+                <Ticket
+                  key={ticket.id}
+                  price={ticket.price}
+                  from={ticket.from}
+                  to={ticket.to}
+                  company={ticket.company}
+                  currency={ticket.currency}
+                  date={ticket.date}
+                  duration={ticket.duration}
+                  time={ticket.time}
+                  connectionAmount={ticket.connectionAmount}
+                />
+              ))}
               {/* <NoTickets /> */}
             </ul>
             <button className={styles.lazyBtn}>Загрузить еще билеты</button>

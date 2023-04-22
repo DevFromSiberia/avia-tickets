@@ -15,6 +15,8 @@ export const fetchTickets = () => async (dispatch: AppDispatch) => {
   }
 }
 
-export const sortTickets = (sorter: string) => {
-  return ticketSlice.actions.setSort(sorter)
-}
+export const sortTickets = (sorter: string) =>
+  ticketSlice.actions.setSort(sorter)
+
+export const filterTickets = (filter: string) =>
+  ticketSlice.actions.transferFilter(filter)

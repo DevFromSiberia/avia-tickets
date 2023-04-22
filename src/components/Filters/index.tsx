@@ -19,9 +19,7 @@ function Filters() {
         <span>Открыть настройки</span>
       </div>
       <div className={dropActive ? styles.filtersList : styles.filtersListHide}>
-        <TransferFilter
-          data={['Без пересадок', '1 пересадка', '2 пересадки', '3 пересадки']}
-        />
+        <TransferFilter />
         <CompanyFilter data={['Победа', 'RedWings', 'S7Airlines']} />
       </div>
     </div>

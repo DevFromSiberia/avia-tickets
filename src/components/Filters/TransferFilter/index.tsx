@@ -1,17 +1,16 @@
 import styles from '../index.module.scss'
 import { SimpleCheckbox } from './SimpleCheckbox'
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux'
 
-interface Props {
-  data: string[]
-}
-
-function TransferFilter({ data }: Props) {
-  /* данные, тип чекбоксов, заголовок,*/
+function TransferFilter() {
+  const { transferFilterTypes, currentFilters } = useAppSelector(
+    (state) => state.ticketReducer
+  )
   return (
     <div className={styles.filter}>
       <div className={styles.title}>Количество пересадок</div>
       <ul className={styles.сheckboxes}>
-        {data.map((item) => {
+        {transferFilterTypes.map((item) => {
           return (
             <li key={item}>
               <SimpleCheckbox text={item} />
