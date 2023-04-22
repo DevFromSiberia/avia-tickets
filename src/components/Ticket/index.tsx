@@ -1,16 +1,47 @@
 import styles from './index.module.scss'
-import company_1 from '../../assets/company_1.png'
-function Ticket() {
+
+import { TicketTime } from '../../models/TiketModel'
+import { getCompanyLogo } from '../../utils/companyLogo'
+
+interface Props {
+  price: number
+  from: string
+  to: string
+  company: string
+  currency: string
+  date: string
+  duration: number
+  time: TicketTime
+  connectionAmount: null | number
+}
+
+function Ticket({
+  price,
+  from,
+  to,
+  company,
+  currency,
+  date,
+  duration,
+  time,
+  connectionAmount,
+}: Props) {
   return (
     <li className={styles.ticket}>
       <div className={styles.price}>
-        <span>12 680 Р</span>
-        <img src={company_1} alt="company" />
+        <span>
+          {price} {currency === 'RUB' ? 'Р' : currency}
+        </span>
+        <img src={getCompanyLogo(company)} alt="company" />
       </div>
       <ul className={styles.infoList}>
         <li className={styles.infoItem}>
-          <div>SVO-LED</div>
-          <div>12:00-16:30</div>
+          <div>
+            {from}-{to}
+          </div>
+          <div>
+            {time.startTime}-{time.endTime}
+          </div>
         </li>
         <li className={styles.infoItem}>
           <div>В пути</div>
@@ -18,7 +49,13 @@ function Ticket() {
         </li>
         <li className={styles.infoItem}>
           <div>Пересадки</div>
-          <div>Одна пересадка</div>
+          <div>
+            {!connectionAmount
+              ? 'Без пересадок'
+              : connectionAmount === 1
+              ? 'Одна пересадка'
+              : `${connectionAmount} пересадки`}
+          </div>
         </li>
       </ul>
     </li>
